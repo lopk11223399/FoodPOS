@@ -47,10 +47,11 @@
       padding: 14px;
       background-color: $primary-color;
       border-radius: 8px;
+      cursor: pointer;
 
       i {
         font-size: 20px;
-        cursor: pointer;
+        pointer-events: none;
       }
     }
   }
@@ -195,6 +196,7 @@
     }
 
     &--img {
+      pointer-events: none;
       svg {
         width: 24px;
         height: 24px;
@@ -204,6 +206,7 @@
     &--name {
       @include font(500, 14px, 130%);
       color: #abbbc2;
+      pointer-events: none;
     }
 
     &--active {

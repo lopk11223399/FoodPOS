@@ -568,10 +568,11 @@ body {
   padding: 14px;
   background-color: #ea7c69;
   border-radius: 8px;
+  cursor: pointer;
 }
 .confirmation__header--btn i {
   font-size: 20px;
-  cursor: pointer;
+  pointer-events: none;
 }
 .confirmation__btn {
   display: flex;
@@ -676,6 +677,9 @@ body {
 .form__select--item:last-child:hover .form__select--name {
   color: white;
 }
+.form__select--img {
+  pointer-events: none;
+}
 .form__select--img svg {
   width: 24px;
   height: 24px;
@@ -685,6 +689,7 @@ body {
   font-size: 14px;
   line-height: 130%;
   color: #abbbc2;
+  pointer-events: none;
 }
 .form__select--active {
   border: 1px solid #abbbc2;

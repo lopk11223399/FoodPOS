@@ -12,6 +12,13 @@ const continuePayment = document.querySelector('.content--btn')
 const backBill = document.querySelector('.confirmation__back')
 const cartPayment = document.getElementById('cart__payment')
 const totalPayment = document.querySelector('.total__subTotal--payment')
+const orderType = document.querySelector('.type__order--select-value')
+const orderTypeList = document.querySelectorAll('.type__order--select-item')
+const selectType = document.querySelector('.form__select')
+const paymentType = document.querySelectorAll('.form__select--item')
+const addItemInPayment = document.querySelector('.confirmation__header--btn')
+const cancelBill = document.querySelector('.confirmation__btn--back')
+const submitBill = document.querySelector('.confirmation__btn--conf')
 
 // Date
 const months = [
@@ -178,6 +185,8 @@ class UI {
             } else {
                 this.displayProducts(filteredProducts)
                 this.getBtnOrder()
+                this.displayCategory(products, 0)
+                this.handleDivider()
             }
         })
     }
@@ -305,7 +314,7 @@ class UI {
     getInputCartItemNumber(itemId, value) {
         cart.forEach((vaule) => {
             if (vaule.id === itemId) {
-                if (value <= 0) {
+                if (value <= 0 || isNaN(value)) {
                     vaule.amount = 1
                 } else {
                     vaule.amount = value
@@ -347,9 +356,13 @@ class UI {
     }
 
     hideBill() {
+        orverlay.classList.add('overlay__hide')
+        bill.classList.add('bill__hide')
+    }
+
+    backBill() {
         backBill.addEventListener('click', () => {
-            orverlay.classList.add('overlay__hide')
-            bill.classList.add('bill__hide')
+            this.hideBill()
         })
     }
 
@@ -392,13 +405,59 @@ class UI {
         })
     }
 
+    getTypeOrder() {
+        orderTypeList.forEach(e => {
+            e.addEventListener('click', event => {
+                const item = event.target.textContent
+                orderType.innerHTML = item
+            })
+        })
+    }
+
+    getPaymentType() {
+        selectType.addEventListener('click', e => {
+            paymentType.forEach(btn => {
+                if (e.target.classList.contains('form__select--item')) {
+                    btn.classList.remove('form__select--active')
+                    e.target.classList.add('form__select--active')
+                }
+            })
+        })
+    }
+
+    addItemInPayment() {
+        addItemInPayment.addEventListener('click', () => {
+            this.hideBill()
+        })
+    }
+
+    cancelBill() {
+        cancelBill.addEventListener('click', () => {
+            this.hideBill()
+        })
+    }
+
+    submitBill() {
+        submitBill.addEventListener('click', () => {
+
+            Storage.clearCart(cart)
+            cart = []
+            this.addCartItem(cart)
+            this.renderCartPayment(cart)
+            this.setTotal(cart)
+            this.hideBill()
+        })
+    }
+
     setupApp() {
-        cart = Storage.clearCart()
+        cart = Storage.clear()
         // cart = Storage.getCart()
-        // this.addCartItem(cart)
+        this.addCartItem(cart)
         this.setTotal(cart)
-        this.hideBill()
+        this.backBill()
         this.payment()
+        this.addItemInPayment()
+        this.cancelBill()
     }
 }
 // local storage
@@ -427,7 +486,11 @@ class Storage {
             : []
     }
 
-    static clearCart() {
+    static clearCart(cart) {
+        localStorage.removeItem("cart")
+    }
+
+    static clear() {
         localStorage.clear()
     }
 }
@@ -450,5 +513,9 @@ document.addEventListener("DOMContentLoaded", () => {
         ui.handleDivider()
         ui.paymentLogic()
         ui.getBtnOrder()
+        ui.getTypeOrder()
+        ui.getPaymentType()
+        ui.submitBill()
+
     })
 })
