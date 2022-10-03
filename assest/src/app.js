@@ -19,6 +19,8 @@ const paymentType = document.querySelectorAll('.form__select--item')
 const addItemInPayment = document.querySelector('.confirmation__header--btn')
 const cancelBill = document.querySelector('.confirmation__btn--back')
 const submitBill = document.querySelector('.confirmation__btn--conf')
+const randomOrder = document.querySelector('.content--random')
+const randomBill = document.querySelector('.title__random')
 
 // Date
 const months = [
@@ -446,7 +448,14 @@ class UI {
             this.renderCartPayment(cart)
             this.setTotal(cart)
             this.hideBill()
+            this.randombill()
         })
+    }
+
+    randombill() {
+        let random = Math.floor(Math.random() * 100000)
+        randomOrder.innerHTML = `Orders #${random}`
+        randomBill.innerHTML = `Orders #${random}`
     }
 
     setupApp() {
@@ -458,6 +467,7 @@ class UI {
         this.payment()
         this.addItemInPayment()
         this.cancelBill()
+        this.randombill()
     }
 }
 // local storage
@@ -516,6 +526,5 @@ document.addEventListener("DOMContentLoaded", () => {
         ui.getTypeOrder()
         ui.getPaymentType()
         ui.submitBill()
-
     })
 })
