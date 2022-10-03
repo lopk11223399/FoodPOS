@@ -1,0 +1,19 @@
+/**
+  * responsive
+  **/
+/* Large screens ----------- */
+@media (min-width: 1824px) {
+  .cart__list {
+    height: 600px;
+  }
+
+  .product {
+    height: 670px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media (min-width: 1224px) {
+}

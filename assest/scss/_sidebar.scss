@@ -1,0 +1,106 @@
+/**
+* sidebar
+**/
+
+.sidebar {
+  width: 104px;
+  @include flex(center, space-between, column);
+  background-color: #1f1d2b;
+  padding: 24px;
+  border-radius: 16px;
+  z-index: 1;
+
+  &__logo {
+    background: linear-gradient(180deg, #ea9769 0%, #ea6969 100%);
+    border-radius: 12px;
+    @include flex(center, center);
+    padding: 6px;
+
+    &--link svg {
+      padding: 8px;
+      width: 40px;
+      height: 40px;
+
+      path {
+        fill: $white-color;
+      }
+    }
+  }
+
+  &__menu {
+    @include flex(center, space-between, column);
+    flex-grow: 1;
+    margin: 46px 0;
+    position: relative;
+    z-index: 2;
+
+    &--link {
+      padding: 16px;
+      border-radius: 8px;
+      transition: all 0.5s ease-in;
+
+      svg {
+        width: 24px;
+        height: 24px;
+
+        path {
+          fill: $primary-color;
+        }
+      }
+
+      &:hover {
+        background-color: $primary-color;
+        box-shadow: $box-shadow;
+
+        svg path {
+          fill: $white-color;
+        }
+      }
+    }
+  }
+
+  &__logout {
+    padding: 16px;
+    border-radius: 8px;
+    transition: all 0.5s ease-in;
+
+    &--link {
+      svg {
+        width: 24px;
+        height: 24px;
+
+        path {
+          fill: $primary-color;
+        }
+      }
+    }
+    &:hover {
+      background-color: $primary-color;
+      box-shadow: $box-shadow;
+
+      svg path {
+        fill: $white-color;
+      }
+    }
+  }
+}
+
+.menu-active {
+  background-color: $primary-color;
+  border-radius: 8px;
+
+  svg path {
+    fill: $white-color;
+  }
+}
+
+.pattern {
+  position: absolute;
+  width: 92px;
+  height: 80px;
+  top: -12px;
+  left: -12px;
+  background: $secondary-color;
+  border-radius: 12px 0px 0px 12px;
+  z-index: -1;
+}
