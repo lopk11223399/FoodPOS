@@ -170,6 +170,8 @@ class UI {
                 btn.classList.add('category__active')
             })
         )
+
+        this.getProductFormCategory()
     }
 
     inputSearchProduct() {
@@ -187,7 +189,7 @@ class UI {
             } else {
                 this.displayProducts(filteredProducts)
                 this.getBtnOrder()
-                this.displayCategory(products, 0)
+                this.displayCategory(products)
                 this.handleDivider()
             }
         })
