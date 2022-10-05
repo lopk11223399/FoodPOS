@@ -1,7 +1,7 @@
 /**
 * sidebar
 **/
-
+/* sidebar */
 .sidebar {
   width: 104px;
   @include flex(center, space-between, column);
@@ -93,7 +93,7 @@
     fill: $white-color;
   }
 }
-
+/* pattern */
 .pattern {
   position: absolute;
   width: 92px;

@@ -11,6 +11,7 @@ body {
 /**
 * App
 **/
+/* App */
 .app {
   background-color: $secondary-color;
   display: flex;
@@ -76,10 +77,19 @@ body {
   }
 }
 
+.title {
+  @include font(600, 20px);
+  color: $white-color;
+  margin-bottom: 34px;
+}
+
 @import "./sidebar";
 @import "./header";
 @import "./category";
 @import "./product";
 @import "./content";
+@import "./cart";
+@import "./total";
 @import "./bill";
+@import "./payment";
 @import "./responsive";

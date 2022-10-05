@@ -1,0 +1,151 @@
+/**
+* cart
+**/
+/* cart */
+.cart {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__title {
+    @include flex(center, space-between, row);
+    margin-bottom: 24px;
+
+    &--left {
+      @include flex(center, space-between, row);
+      flex-grow: 1;
+      @include font(600, 16px);
+      color: $white-color;
+    }
+
+    &-price {
+      margin-left: 43px;
+      @include font(600, 16px);
+      color: $white-color;
+    }
+  }
+
+  &__list {
+    height: 392px;
+    border-top: 1px solid #393c49;
+    border-bottom: 1px solid #393c49;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    margin: 24px 0;
+
+    &--top {
+      @include flex(center, space-between, row);
+    }
+
+    &--bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      margin-top: 10px;
+    }
+  }
+
+  &__name {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+
+    &--left {
+      @include flex(center, space-between, row);
+    }
+  }
+
+  &__img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  &__desc {
+    margin-left: 8px;
+
+    &--name {
+      @include font(500, 14px, 130%);
+      color: #ffffff;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    &--price {
+      @include font(500, 12px);
+      color: #abbbc2;
+    }
+  }
+
+  &__input {
+    width: 48px;
+    height: 48px;
+    background: $border-background-color;
+    border: 1px solid $border-liner-color;
+    border-radius: 8px;
+    text-align: center;
+    color: $white-color;
+    margin-left: 16px;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  &--total {
+    margin: auto 0;
+    margin-left: 30px;
+    @include font(500, 16px);
+    color: $white-color;
+  }
+
+  &__bottom {
+    &--input {
+      flex-grow: 1;
+      padding: 14px;
+      background: $border-background-color;
+      border: 1px solid $border-liner-color;
+      border-radius: 8px;
+      outline: none;
+      color: $text-time-color;
+      @include font(400);
+    }
+    &--trash {
+      border: 1px solid $primary-color;
+      border-radius: 8px;
+      padding: 14px;
+      margin-left: 16px;
+      cursor: pointer;
+      transition: background-color 0.4s linear;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        pointer-events: none;
+
+        path {
+          fill: $primary-color;
+        }
+      }
+
+      &:hover {
+        background-color: $primary-color;
+        svg path {
+          fill: $white-color;
+        }
+      }
+    }
+  }
+}

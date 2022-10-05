@@ -1,12 +1,7 @@
 /**
   * products
   **/
-.title {
-  @include font(600, 20px);
-  color: $white-color;
-  margin-bottom: 34px;
-}
-
+/* product */
 .product {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, auto));

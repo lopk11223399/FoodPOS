@@ -70,8 +70,9 @@ class Products {
         }
     }
 }
-// display products
+
 class UI {
+    // display products
     displayProducts(products) {
         let result = ''
         products.forEach(product => {
@@ -90,6 +91,7 @@ class UI {
         productsDOM.innerHTML = result
     }
 
+    // display category
     displayCategory(products, curentIndex = 0) {
         const categorys = products.reduce((values, item) => {
             if (!values.includes(item.category)) {
@@ -107,10 +109,13 @@ class UI {
         categorysDOM.innerHTML = result
     }
 
+    // render Time today
     displayTime() {
+        // render time after 1s
         setInterval(this.getTime, 1000)
     }
 
+    // Get Time
     getTime() {
         let today = new Date()
         let year = today.getFullYear()
@@ -124,6 +129,7 @@ class UI {
 
         timeToday.textContent = `${weekday}, ${date} ${month} ${year} - ${hours}:${minutes}:${seconds}`
 
+        // get date add to bill
         return {
             weekday: weekday,
             date: date,
@@ -135,6 +141,7 @@ class UI {
         }
     }
 
+    // Get product when click to category
     getProductFormCategory() {
         const categoryBtn = document.querySelectorAll('.category__list--item')
         categoryBtn.forEach(btn =>
@@ -158,6 +165,7 @@ class UI {
         )
     }
 
+    // handle divider when click to category
     handleDivider() {
         const categoryBtn = document.querySelectorAll('.category__list--item')
         const categorActive = document.querySelector('.category__list--item.category__active')
@@ -171,9 +179,11 @@ class UI {
             })
         )
 
+        // call get product when click to category
         this.getProductFormCategory()
     }
 
+    // search product
     inputSearchProduct() {
         inputSearch.addEventListener('keyup', () => {
             const value = inputSearch.value
@@ -187,14 +197,19 @@ class UI {
                 productsDOM.innerHTML = `<h2 class="product__note">Sorry, no products matched your search</h2>`
                 return
             } else {
+                // call render item after search
                 this.displayProducts(filteredProducts)
+                // call handle click order
                 this.getBtnOrder()
+                // call render category after search
                 this.displayCategory(products)
+                // call handle divider
                 this.handleDivider()
             }
         })
     }
 
+    // handle click order add to cart
     getBtnOrder() {
         const orderBtns = [...document.querySelectorAll('.product__item--btn')]
         cart = Storage.getCart()
@@ -221,6 +236,7 @@ class UI {
         })
     }
 
+    // render total 
     setTotal(cart) {
         let tempTotal = 0
 
@@ -239,15 +255,18 @@ class UI {
         }
     }
 
+    // logic after add item to cart
     addCartItem(items) {
         cartList.innerHTML = this.getCartItems(items)
         this.removeItemCart()
         this.inputCartItemNumber()
         this.inputCartItemNote()
         this.payment()
+        // set up total
         this.setTotal(items)
     }
 
+    // render item after click order 
     getCartItems(items) {
         let result = ''
         if (Array.isArray(items)) {
@@ -284,6 +303,7 @@ class UI {
         return result
     }
 
+    // handle click trash to remove item in cart
     removeItemCart() {
         const trashBtns = cartList.querySelectorAll('.cart__bottom--trash')
         trashBtns.forEach(e => {
@@ -296,12 +316,14 @@ class UI {
         })
     }
 
+    // get item to remove
     getItemRemove(id) {
         cart = cart.filter(item => item.id !== id)
         Storage.saveCart(cart)
         this.setTotal(cart)
     }
 
+    // handle change input number amount item
     inputCartItemNumber() {
         const inputValues = cartList.querySelectorAll('.cart__input')
         inputValues.forEach(e => {
@@ -315,6 +337,7 @@ class UI {
         })
     }
 
+    // get amount item to change 
     getInputCartItemNumber(itemId, value) {
         cart.forEach((vaule) => {
             if (vaule.id === itemId) {
@@ -331,6 +354,7 @@ class UI {
         this.setTotal(cart)
     }
 
+    // handle change input note item
     inputCartItemNote() {
         const noteItem = cartList.querySelectorAll('.cart__bottom--input')
         noteItem.forEach(e => {
@@ -343,6 +367,7 @@ class UI {
         })
     }
 
+    // get item add note to cart
     getInputCartItemNote(value, itemId) {
         cart.forEach((vaule) => {
             if (vaule.id === itemId) {
@@ -354,22 +379,26 @@ class UI {
         this.renderCartPayment(cart)
     }
 
+    // show Bill
     showBill() {
         orverlay.classList.remove('overlay__hide')
         bill.classList.remove('bill__hide')
     }
 
+    // hide Bill
     hideBill() {
         orverlay.classList.add('overlay__hide')
         bill.classList.add('bill__hide')
     }
 
+    // hande click back to close bill
     backBill() {
         backBill.addEventListener('click', () => {
             this.hideBill()
         })
     }
 
+    // hande click show bill and render products in cart to bill
     payment() {
         continuePayment.addEventListener('click', () => {
             this.showBill()
@@ -378,11 +407,13 @@ class UI {
         })
     }
 
+    // render item in cart to bill
     renderCartPayment(item) {
         cartPayment.innerHTML = this.getCartItems(item)
         this.setTotal(item)
     }
 
+    // Logic item in bill
     paymentLogic() {
         cartPayment.addEventListener('click', e => {
             if (e.target.classList.contains('cart__bottom--trash')) {
@@ -409,6 +440,7 @@ class UI {
         })
     }
 
+    // chose type in bill payment
     getTypeOrder() {
         orderTypeList.forEach(e => {
             e.addEventListener('click', event => {
@@ -418,6 +450,7 @@ class UI {
         })
     }
 
+    // chose type payment  
     getPaymentType() {
         selectType.addEventListener('click', e => {
             paymentType.forEach(btn => {
@@ -429,18 +462,21 @@ class UI {
         })
     }
 
+    // handle add item adter show bill
     addItemInPayment() {
         addItemInPayment.addEventListener('click', () => {
             this.hideBill()
         })
     }
 
+    // handle delete item after show bill
     cancelBill() {
         cancelBill.addEventListener('click', () => {
             this.hideBill()
         })
     }
 
+    // handle item after sumbit success bill
     submitBill() {
         submitBill.addEventListener('click', () => {
 
@@ -454,12 +490,14 @@ class UI {
         })
     }
 
+    // random number bill
     randombill() {
         let random = Math.floor(Math.random() * 100000)
         randomOrder.innerHTML = `Orders #${random}`
         randomBill.innerHTML = `Orders #${random}`
     }
 
+    // set up App after open web
     setupApp() {
         cart = Storage.clear()
         // cart = Storage.getCart()
@@ -474,34 +512,41 @@ class UI {
 }
 // local storage
 class Storage {
+    // save data form database add to local storage
     static saveProducts(products) {
         localStorage.setItem('products', JSON.stringify(products))
     }
 
+    // get data form local storage
     static getProducts() {
         let products = JSON.parse(localStorage.getItem('products'))
         return products
     }
 
+    // get data.id form local storage
     static getProductId(id) {
         let products = JSON.parse(localStorage.getItem('products'))
         return products.find(product => product.id === id)
     }
 
+    // save cart to local storage
     static saveCart(cart) {
         localStorage.setItem('cart', JSON.stringify(cart))
     }
 
+    // get cart to local storage
     static getCart() {
         return localStorage.getItem('cart')
             ? JSON.parse(localStorage.getItem('cart'))
             : []
     }
 
-    static clearCart(cart) {
+    // remove cart to local storage
+    static clearCart() {
         localStorage.removeItem("cart")
     }
 
+    // delete all data to local storage
     static clear() {
         localStorage.clear()
     }
