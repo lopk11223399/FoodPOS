@@ -1,0 +1,21 @@
+/**
+* content
+**/
+/* content */
+.content {
+  @include flex(flex-start, space-between, column);
+
+  &--random {
+    @include font(600, 20px);
+    color: $white-color;
+    margin-bottom: 24px;
+  }
+
+  &--btn {
+    margin-top: 42px;
+    padding: 14px 0;
+    &:hover {
+      box-shadow: $box-shadow;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "sys": { "id": "1" },
+      "fields": {
+        "fullname": "admin",
+        "password": "123456"
+      }
+    },
+    {
+      "sys": { "id": "2" },
+      "fields": {
+        "fullname": "PhanNhatHoang",
+        "password": "123456"
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+/**
+* header
+**/
+/* header */
+.header {
+  @include flex(center, space-between, row);
+  margin-bottom: 24px;
+
+  &__title {
+    &--name {
+      @include font(600, 28px);
+      text-transform: capitalize;
+      margin-bottom: 4px;
+    }
+
+    &--time {
+      color: $text-time-color;
+      @include font(400, 16px);
+      text-transform: capitalize;
+    }
+  }
+
+  &__search {
+    background-color: $border-background-color;
+    padding: 14px;
+    border: 1px solid $border-liner-color;
+    border-radius: 8px;
+
+    &--icon {
+      margin-right: 8px;
+      font-size: 12px;
+    }
+
+    &--text {
+      background-color: transparent;
+      outline: none;
+      border: none;
+      color: $white-color;
+      @include font(400);
+
+      &::placeholder {
+        color: #abbbc2;
+        @include font(400);
+      }
+    }
+  }
+}

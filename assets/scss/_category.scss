@@ -1,0 +1,38 @@
+/**
+* category
+**/
+/* category */
+.category {
+  position: relative;
+  margin-bottom: 24px;
+
+  &__list {
+    @include flex(center, start, row);
+    border-bottom: 1px solid #393c49;
+
+    &--item {
+      color: $white-color;
+      @include font();
+      text-transform: capitalize;
+      margin-right: 32px;
+      margin-bottom: 13px;
+      cursor: pointer;
+    }
+  }
+
+  &__active {
+    color: $primary-color;
+  }
+}
+
+/* divider */
+.divider {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 37px;
+  border: 3px solid $primary-color;
+  border-radius: 4px;
+  background-color: $primary-color;
+  transition: left 0.3s linear;
+}

@@ -1,0 +1,77 @@
+/**
+  * responsive
+  **/
+/* Large screens ----------- */
+@media (min-width: 1824px) {
+  .app {
+    border-radius: 16px;
+  }
+
+  .cart {
+    height: 100%;
+    max-height: 600px;
+  }
+
+  .cart__list {
+    height: 100%;
+  }
+
+  .product {
+    height: 100vh;
+    grid-template-columns: repeat(auto-fit, minmax(180px, auto));
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: space-between;
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media (min-width: 1224px) {
+}
+
+/* Mobile & Tablet ----------- */
+@media (max-width: 1023px) {
+}
+
+/* Tablet ----------- */
+@media (min-width: 740px) and (max-width: 1023px) {
+  .column2 {
+    display: none;
+  }
+
+  .cart__list {
+    height: 100%;
+    max-height: 500px;
+  }
+
+  .product {
+    height: 100vh;
+    grid-template-columns: repeat(auto-fit, minmax(160px, auto));
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .bill {
+    width: 100%;
+  }
+
+  .bill__icon {
+    display: block;
+    position: relative;
+  }
+
+  .bill__amount {
+    background-color: $primary-color;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border-radius: 50%;
+    font-size: 18px;
+    text-align: center;
+    margin: auto;
+    padding: 5px 10px;
+    color: $white-color;
+  }
+}
+
+/* Mobile ----------- */
+@media (max-width: 739px) {
+}
