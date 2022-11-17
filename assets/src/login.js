@@ -79,7 +79,14 @@ class Event {
         })
     }
 
-    checkInput() {
+    checkInputName() {
+        errorName.textContent = 'Name can\'t be blank'
+        errorPass.textContent = 'Password can\'t be blank'
+        errorName.classList.add("error-txt")
+        errorPass.classList.add("error-txt")
+    }
+
+    checkInputPass() {
         errorName.textContent = 'Name can\'t be blank'
         errorPass.textContent = 'Password can\'t be blank'
         errorName.classList.add("error-txt")
