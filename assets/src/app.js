@@ -240,11 +240,12 @@ class UI {
 	// search product
 	inputSearchProduct() {
 		inputSearch.addEventListener('keyup', () => {
-			const value = inputSearch.value.toLowerCase()
+			// const value = inputSearch.value.toLowerCase()
+			const value = inputSearch.value
 			// console.log(value)
 			let products = [...Storage.getProducts()]
 			let filteredProducts = products.filter(product => {
-				// product.title.toLowerCase().includes(value)
+				product.title.toLowerCase().includes(value)
 				return product.title.includes(value)
 			})
 
