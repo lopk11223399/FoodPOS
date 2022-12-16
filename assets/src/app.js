@@ -240,8 +240,7 @@ class UI {
 	// search product
 	inputSearchProduct() {
 		inputSearch.addEventListener('keyup', () => {
-			// const value = inputSearch.value.toLowerCase()
-			const value = inputSearch.value
+			const value = inputSearch.value.toLowerCase()
 			// console.log(value)
 			let products = [...Storage.getProducts()]
 			let filteredProducts = products.filter(product => {
@@ -345,7 +344,9 @@ class UI {
                             </div>
                             <input type="number" class="cart__input" value="${amount}">
                         </div>
-                        <p class="cart--total">$${price * amount}</p>
+                        <p class="cart--total">$${(price * amount).toFixed(
+													2,
+												)}</p>
                     </div>
                     <div class="cart__item--bottom">
                         <input class="cart__bottom--input" type="text" placeholder="Order Note..." value="${
@@ -363,7 +364,6 @@ class UI {
 			})
 		}
 
-		//(price * amount).toFixed(2,)
 		return result
 	}
 
